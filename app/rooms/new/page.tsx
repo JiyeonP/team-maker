@@ -424,7 +424,7 @@ export default function NewRoomPage() {
             }
           />
           <p className="mt-2 text-sm text-gray-500">
-            권장 팀 수로 어렵다면 ±1팀 대안을 제안합니다.
+            권장 팀 수로 어렵다면 팀 수를 변경하여 대안을 제안합니다.
           </p>
         </div>
 

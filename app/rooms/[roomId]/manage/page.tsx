@@ -362,7 +362,7 @@ export default function ManagePage({
           <p>
             <span className="font-medium">대안:</span>{" "}
             {room.allow_team_count_adjustment
-              ? "권장 팀 수 ±1 제안"
+              ? "권장 팀 수, 스터디 시간 등 조건을 조정하여 대안 제안"
               : "대안 제안 없음"}
           </p>
         </div>
