@@ -332,15 +332,24 @@ export default function RoomParticipantPage({
           throw createError;
         }
 
+        if (!createdParticipant) {
+          throw new Error("참여자 생성에 실패했습니다.");
+        }
+
         currentParticipant = createdParticipant;
         setParticipant(createdParticipant);
       }
 
+      if (!currentParticipant) {
+        throw new Error("참여자 정보를 확인할 수 없습니다.");
+      }
+
+      const participantId = currentParticipant.id;
+
       const { error: deleteError } = await supabase
         .from("availability")
         .delete()
-        .eq("participant_id", currentParticipant.id);
-
+        .eq("participant_id", participantId);
       if (deleteError) {
         throw deleteError;
       }
