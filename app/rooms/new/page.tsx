@@ -138,7 +138,7 @@ export default function NewRoomPage() {
 
     try {
       if (!title.trim()) {
-        throw new Error("스터디 이름을 입력해주세요.");
+        throw new Error("모임 이름을 입력해주세요.");
       }
 
       if (selectedDates.length < 1) {
@@ -154,7 +154,7 @@ export default function NewRoomPage() {
       }
 
       if (dayEndSlot - dayStartSlot < durationMinutes / 30) {
-        throw new Error("선택한 시간대가 스터디 시간보다 짧습니다.");
+        throw new Error("선택한 시간대가 모임 시간보다 짧습니다.");
       }
 
       if (desiredTeamCount < 1) {
@@ -210,16 +210,16 @@ export default function NewRoomPage() {
 
   return (
     <main className="mx-auto max-w-2xl p-8">
-      <h1 className="text-3xl font-bold">스터디 방 만들기</h1>
+      <h1 className="text-3xl font-bold">모임 방 만들기</h1>
 
       <div className="mt-8 space-y-6">
         <div>
-          <label className="block font-medium">스터디 이름</label>
+          <label className="block font-medium">모임 이름</label>
           <input
             className="mt-2 w-full rounded border p-3"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
-            placeholder="예: 알고리즘 스터디"
+            placeholder="예: (민법) 6월 3주차 월화 스터디"
           />
         </div>
 
@@ -371,7 +371,7 @@ export default function NewRoomPage() {
         </div>
 
         <div>
-          <label className="block font-medium">스터디 시간</label>
+          <label className="block font-medium">모임 시간</label>
           <select
             className="mt-2 w-full rounded border p-3"
             value={durationMinutes}

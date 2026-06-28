@@ -438,10 +438,10 @@ export function recommendStudyTeams(input: MatchInput): MatchResult {
     if (shorterResult) {
       suggestions.push({
         type: "shorter_duration",
-        message: `스터디 시간을 ${formatDuration(shorterDuration)}으로 줄이면 권장 ${input.desiredTeamCount}팀으로 전원 배정 가능합니다.`,
+        message: `모임 시간을 ${formatDuration(shorterDuration)}으로 줄이면 권장 ${input.desiredTeamCount}팀으로 전원 배정 가능합니다.`,
         result: {
           status: "success",
-          reason: `스터디 시간을 줄이면 권장 팀 수로 전원 배정 가능합니다.`,
+          reason: `모임 시간을 줄이면 권장 팀 수로 전원 배정 가능합니다.`,
           teamCount: input.desiredTeamCount,
           durationMinutes: shorterDuration,
           teams: shorterResult,

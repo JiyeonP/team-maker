@@ -402,7 +402,7 @@ export default function RoomParticipantPage({
       <h1 className="text-3xl font-bold">{room.title}</h1>
       <div className="mt-8 rounded border p-4">
         <p className="text-sm text-gray-600">
-          모든 참여자가 입력을 마쳤다면, 현재 반영 현황을 보고 조를 짤 수
+          모든 참여자가 입력을 마쳤다면, 현재 반영 현황을 보고 팀을 짤 수
           있습니다.
         </p>
 
@@ -410,7 +410,7 @@ export default function RoomParticipantPage({
           href={`/rooms/${room.id}/manage`}
           className="mt-3 inline-block rounded bg-gray-900 px-5 py-3 font-semibold text-white"
         >
-          시간표 반영 현황 및 조 짜기
+          시간표 반영 현황 및 팀 짜기
         </Link>
       </div>
 

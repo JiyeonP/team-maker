@@ -322,7 +322,7 @@ export default function ManagePage({
     <main className="mx-auto max-w-6xl p-4 md:p-8">
       <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
         <div>
-          <h1 className="text-3xl font-bold">시간표 반영 현황 및 조 짜기</h1>
+          <h1 className="text-3xl font-bold">시간표 반영 현황 및 팀 짜기</h1>
           <p className="mt-2 text-gray-600">{room.title}</p>
         </div>
 
@@ -348,7 +348,7 @@ export default function ManagePage({
             {slotToTime(room.day_start_slot)}~{slotToTime(room.day_end_slot)}
           </p>
           <p>
-            <span className="font-medium">스터디 시간:</span>{" "}
+            <span className="font-medium">모임 시간:</span>{" "}
             {formatDuration(room.duration_minutes)}
           </p>
           <p>
@@ -543,10 +543,10 @@ export default function ManagePage({
       </section>
 
       <section className="mt-6 rounded border p-4">
-        <h2 className="text-xl font-semibold">조 추천</h2>
+        <h2 className="text-xl font-semibold">팀 추천</h2>
 
         <p className="mt-2 text-sm text-gray-600">
-          모든 참여자를 반드시 한 팀에 배정하는 조합만 추천합니다.
+          모든 참여자를 반드시 한 팀에 배정하는 팀합만 추천합니다.
         </p>
 
         <button
@@ -555,7 +555,7 @@ export default function ManagePage({
           onClick={runRecommendation}
           disabled={isRecommending || participants.length === 0}
         >
-          {isRecommending ? "추천 중..." : "조 추천하기"}
+          {isRecommending ? "추천 중..." : "팀 추천하기"}
         </button>
 
         {message && <p className="mt-4 rounded bg-gray-100 p-3">{message}</p>}
@@ -567,8 +567,8 @@ export default function ManagePage({
                 <h3 className="text-lg font-semibold">{matchResult.reason}</h3>
 
                 <p className="mt-2 text-sm text-gray-600">
-                  스터디 시간: {formatDuration(matchResult.durationMinutes)} /
-                  총 {matchResult.teamCount}팀
+                  모임 시간: {formatDuration(matchResult.durationMinutes)} / 총{" "}
+                  {matchResult.teamCount}팀
                 </p>
                 <button
                   type="button"
@@ -584,7 +584,7 @@ export default function ManagePage({
                       <h4 className="font-semibold">{index + 1}팀</h4>
                       {leadersByTeamIndex[index] && (
                         <p className="mt-2 inline-block rounded-full bg-black px-3 py-1 text-sm font-semibold text-white">
-                          조장: {leadersByTeamIndex[index]}
+                          팀장: {leadersByTeamIndex[index]}
                         </p>
                       )}
 
@@ -652,7 +652,7 @@ export default function ManagePage({
                   </div>
                 ) : (
                   <p className="mt-4 text-sm text-gray-600">
-                    날짜를 추가하거나, 가능 시간을 넓히거나, 스터디 시간을
+                    날짜를 추가하거나, 가능 시간을 넓히거나, 모임 시간을
                     줄여보세요.
                   </p>
                 )}
