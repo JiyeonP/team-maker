@@ -546,7 +546,7 @@ export default function ManagePage({
         <h2 className="text-xl font-semibold">팀 추천</h2>
 
         <p className="mt-2 text-sm text-gray-600">
-          모든 참여자를 반드시 한 팀에 배정하는 팀합만 추천합니다.
+          모든 참여자를 반드시 한 팀에 배정하는 조합만 추천합니다.
         </p>
 
         <button
