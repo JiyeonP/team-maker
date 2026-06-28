@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { use, useEffect, useMemo, useState } from "react";
 import { supabase } from "../../../lib/supabase";
 
@@ -262,6 +263,18 @@ export default function RoomParticipantPage({
   return (
     <main className="mx-auto max-w-5xl p-8">
       <h1 className="text-3xl font-bold">{room.title}</h1>
+      <div className="mt-6 rounded border p-4">
+        <p className="text-sm text-gray-600">
+          현재 참여 현황을 보고 조를 짤 수 있습니다.
+        </p>
+
+        <Link
+          href={`/rooms/${room.id}/manage`}
+          className="mt-3 inline-block rounded bg-gray-900 px-5 py-3 font-semibold text-white"
+        >
+          시간표 반영 현황 및 조 짜기
+        </Link>
+      </div>
 
       <p className="mt-2 text-gray-600">
         가능한 시간을 30분 단위로 선택해주세요.

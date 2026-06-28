@@ -84,7 +84,6 @@ export default function NewRoomPage() {
   const [desiredTeamCount, setDesiredTeamCount] = useState(2);
 
   const [participantUrl, setParticipantUrl] = useState("");
-  const [adminUrl, setAdminUrl] = useState("");
   const [isCreating, setIsCreating] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -122,6 +121,15 @@ export default function NewRoomPage() {
 
       return [...current, dateKey].sort();
     });
+  }
+
+  async function copyToClipboard(text: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert("링크가 복사되었습니다.");
+    } catch {
+      alert("복사에 실패했습니다. 링크를 직접 복사해주세요.");
+    }
   }
 
   async function createRoom() {
@@ -189,7 +197,6 @@ export default function NewRoomPage() {
       const origin = window.location.origin;
 
       setParticipantUrl(`${origin}/rooms/${room.id}`);
-      setAdminUrl(`${origin}/rooms/${room.id}/admin?key=${adminKey}`);
     } catch (error) {
       setErrorMessage(
         error instanceof Error
@@ -433,26 +440,30 @@ export default function NewRoomPage() {
           <p className="rounded bg-red-50 p-3 text-red-600">{errorMessage}</p>
         )}
 
-        {participantUrl && adminUrl && (
+        {participantUrl && (
           <div className="space-y-4 rounded border p-4">
             <h2 className="text-xl font-bold">방이 생성되었습니다</h2>
 
             <div>
-              <p className="font-medium">참여자 링크</p>
-              <input
-                className="mt-1 w-full rounded border p-2"
-                value={participantUrl}
-                readOnly
-              />
-            </div>
-
-            <div>
-              <p className="font-medium">방장 링크</p>
-              <input
-                className="mt-1 w-full rounded border p-2"
-                value={adminUrl}
-                readOnly
-              />
+              <p className="font-medium">공유 링크</p>
+              <div className="mt-1 flex gap-2">
+                <input
+                  className="min-w-0 flex-1 rounded border p-2"
+                  value={participantUrl}
+                  readOnly
+                />
+                <button
+                  type="button"
+                  className="shrink-0 rounded bg-black px-4 py-2 text-sm font-semibold text-white"
+                  onClick={() => copyToClipboard(participantUrl)}
+                >
+                  복사
+                </button>
+              </div>
+              <p className="mt-2 text-sm text-gray-500">
+                이 링크를 참여자들에게 공유하세요. 해당 링크에서 가능한 시간을
+                입력하고 팀 편성을 할 수 있습니다.
+              </p>
             </div>
           </div>
         )}
